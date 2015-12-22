@@ -19,6 +19,7 @@ package com.github.frapontillo.pulse.crowd.lemmatize.morphit;
 import com.github.frapontillo.pulse.crowd.data.entity.Message;
 import com.github.frapontillo.pulse.crowd.data.entity.Token;
 import com.github.frapontillo.pulse.crowd.lemmatize.ILemmatizerOperator;
+import com.github.frapontillo.pulse.spi.IPlugin;
 import com.github.frapontillo.pulse.spi.ISingleablePlugin;
 import com.github.frapontillo.pulse.spi.VoidConfig;
 import org.apache.commons.io.IOUtils;
@@ -128,6 +129,10 @@ public class MorphITLemmatizer extends ISingleablePlugin<Message, VoidConfig> {
 
     @Override public String getName() {
         return PLUGIN_NAME;
+    }
+
+    @Override public IPlugin<Message, Message, VoidConfig> getInstance() {
+        return new MorphITLemmatizer();
     }
 
     @Override public VoidConfig getNewParameter() {
